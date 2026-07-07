@@ -113,11 +113,45 @@ color: white;
         text-align: center;
         padding: 40px 20px;
     }
+    .texte-container h1 {
+        font-size: 2.6rem;
+    }
+    .texte-container p {
+        font-size: 1rem;
+    }
+    .description {
+        margin: 30px auto;
+        padding: 0 18px;
+    }
+    .action-accroche {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        padding: 0 20px;
+    }
+    .btn-menu {
+        width: 100%;
+        max-width: 360px;
+    }
+    .footer-resto {
+        padding: 50px 20px 30px 20px;
+    }
+    .footer-container {
+        gap: 30px;
+        text-align: center;
+    }
+    .menu-header,
+    .contact-header {
+        padding-top: 110px;
+    }
 }
-.description{
-    margin-left: 150px;
-    margin-right: 150px;
+.description {
+    max-width: 900px;
+    margin: 40px auto 0 auto;
+    padding: 0 20px;
     text-align: center;
+    line-height: 1.8;
 }
 /* --- Section Accroche --- */
 .accroche-plats {
@@ -750,13 +784,27 @@ color: white;
     color: #e74c3c;
     font-weight: 600;
 }
-.btn-menu.btn-book-trigger{
+.btn-menu.btn-book-trigger {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 40px auto 0 auto;
+    padding: 16px 30px;
     color: white;
-    background-color: black;
-    margin-top: 50px;
-    margin-left: 1000px;
-    font-size: 70%;
+    background-color: #000;
+    font-size: 1rem;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
+
+.btn-menu-secondary {
+    margin-top: 18px;
+}
+
 /* --- Navigation Desktop (Par défaut) --- */
 .banniere {
     display: flex;
@@ -786,20 +834,41 @@ color: white;
 /* --- Navigation Mobile (Le Hamburger) --- */
 @media (max-width: 768px) {
     .menu-toggle {
-        display: block; /* On affiche l'icône */
+        display: flex; /* On affiche l'icône */
+        flex-direction: column;
+        justify-content: center;
         cursor: pointer;
     }
     
     .menu-toggle .bar {
-        width: 25px; height: 3px; background: white; margin: 5px;
+        width: 25px;
+        height: 3px;
+        background: white;
+        margin: 4px 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
     }
 
     .nav-menu {
         display: none; /* Menu caché par défaut */
         position: absolute;
-        top: 60px; left: 0; width: 100%;
+        top: 70px;
+        left: 0;
+        width: 100%;
         background-color: #2c3e50;
         text-align: center;
+        padding-bottom: 20px;
     }
 
     .nav-menu.active {
@@ -809,5 +878,39 @@ color: white;
     .nav-menu ul {
         flex-direction: column;
         padding: 20px 0;
+        gap: 16px;
+    }
+
+    .nav-menu ul li a {
+        display: block;
+        padding: 12px 0;
+        font-size: 1.1rem;
+    }
+
+    .menu-section,
+    .menu-section:nth-child(even) {
+        flex-direction: column;
+        gap: 40px;
+        margin-bottom: 70px;
+    }
+
+    .menu-image-box {
+        width: 100%;
+        height: 300px;
+    }
+
+    .contact-flex-layout {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .modal-box {
+        width: calc(100% - 32px);
+        max-width: 480px;
+        padding: 30px 24px;
     }
 }
