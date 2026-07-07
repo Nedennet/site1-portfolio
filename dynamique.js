@@ -67,4 +67,10 @@ modalOverlay.addEventListener('click', (event) => {
         document.body.style.overflow = '';
     }
 });
-     
+
+    const menuToggle = document.querySelector('#mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
