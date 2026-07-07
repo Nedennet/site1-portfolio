@@ -1,0 +1,759 @@
+/* --- Reset de base --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+   background-color: #f4f4f9;
+    color: #333;
+    /* On ajoute un padding en haut pour que le contenu ne soit pas caché sous la bannière fixe */
+    padding-top: 100px;
+}
+
+/* --- Style de la Bannière (Navbar) --- */
+.banniere {
+position: fixed; /* Fixe la bannière en haut */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* S'assure que la bannière reste au-dessus du reste */
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c3e50;
+    
+    /* Padding initial (plus grand) */
+    padding: 30px 50px; 
+    
+    /* Animation fluide pour le changement de taille */
+    transition: padding 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.banniere .logo {
+  color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: font-size 0.4s ease; /* Animation fluide pour le logo */
+}
+
+.banniere nav ul {
+  list-style-type: none;
+    display: flex;
+    gap: 40px;
+}
+
+.banniere nav ul li a {
+color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.banniere nav ul li a:hover {
+  color: #e74c3c; /* Rouge appétissant au survol */
+}
+.banniere.scrolled {
+    padding: 10px 50px; /* Padding réduit (la bannière se raptisse) */
+    background-color: rgba(44, 62, 80, 0.95); /* Rend la bannière très légèrement transparente */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ajoute une petite ombre en bas */
+}
+
+.banniere.scrolled .logo {
+    font-size: 1.4rem; /* Le logo rétrécit aussi un peu */
+}
+
+/* --- Style de la Section Présentation --- */
+.presentation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px; /* Espace entre la photo et le texte */
+    padding: 80px 50px;
+    max-width: 1200px;
+    margin: 40px auto;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.image-container img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.texte-container {
+    max-width: 500px;
+}
+
+.texte-container h1 {
+    font-size: 3.5rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.texte-container p {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    line-height: 1.6;
+}
+
+/* --- Responsive (Pour les mobiles et tablettes) --- */
+@media (max-width: 900px) {
+    .presentation {
+        flex-direction: column; /* Passe les éléments l'un en dessous de l'autre */
+        text-align: center;
+        padding: 40px 20px;
+    }
+}
+.description{
+    margin-left: 150px;
+    margin-right: 150px;
+    text-align: center;
+}
+/* --- Section Accroche --- */
+.accroche-plats {
+    padding: 60px 50px;
+    max-width: 1200px;
+    margin: 0 auto 80px auto;
+    text-align: center;
+}
+
+.texte-accroche h2 {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-style: italic; /* Un style un peu plus poétique pour l'accroche */
+}
+
+.texte-accroche p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+    line-height: 1.8;
+}
+
+/* Grille pour les 3 images d'accroche */
+.galerie-accroche {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* Style de chaque carte d'accroche */
+.carte-accroche {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    cursor: pointer;
+    
+    /* Cache l'élément au départ pour le script de scroll */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.carte-accroche img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+/* Effet Zoom au survol */
+.carte-accroche:hover img {
+    transform: scale(1.08);
+}
+
+/* Voile noir discret et texte au survol */
+.overlay-accroche {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Un simple voile sombre */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.carte-accroche:hover .overlay-accroche {
+    opacity: 1;
+}
+
+.overlay-accroche span {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 2px solid white;
+    padding-bottom: 5px;
+}
+
+/* Classe d'apparition déclenchée par le JavaScript */
+.carte-accroche.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* --- Style du Bouton Menu --- */
+.action-accroche {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn-menu {
+    display: inline-block;
+
+    padding: 16px 40px;
+    background-color: #e74c3c; /* Rouge appétissant */
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px; /* Bouton arrondi très moderne */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-menu:hover {
+    background-color: #c0392b; /* Rouge un peu plus sombre au survol */
+    transform: translateY(-3px); /* Le bouton s'élève légèrement */
+    box-shadow: 0 10px 25px rgba(231, 76, 60, 0.5); /* L'ombre s'accentue */
+}
+
+
+/* --- Style du Footer --- */
+.footer-resto {
+    background-color: #1a252f; /* Un bleu nuit encore plus sombre pour marquer la fin de page */
+    color: #ecf0f1;
+    padding: 70px 50px 30px 50px;
+    margin-top: 100px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    /* Crée 3 colonnes si l'écran est grand, ou bascule sur une colonne sur mobile */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 50px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Ligne de séparation discrète */
+    padding-bottom: 40px;
+}
+
+.footer-col h3 {
+    font-size: 1.4rem;
+    color: #e74c3c; /* Rappel de la couleur d'accentuation */
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.footer-col p {
+    font-size: 1rem;
+    color: #bdc3c7; /* Texte légèrement grisé pour une meilleure lisibilité */
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+
+.footer-col strong {
+    color: white; /* Met en valeur les jours de la semaine */
+}
+
+/* Partie Copyright */
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+/* Adaptation pour les tablettes et mobiles */
+@media (max-width: 768px) {
+    .footer-resto {
+        padding: 50px 20px 20px 20px;
+    }
+    .footer-container {
+        gap: 35px;
+        text-align: center; /* Centre le texte sur petit écran */
+    }
+}
+/* --- Nouvelle Page Menu Premium --- */
+.menu-header {
+    text-align: center;
+    padding: 140px 20px 40px 20px;
+    background-color: #2c3e50;
+    color: white;
+}
+
+.menu-header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.menu-header p {
+    font-style: italic;
+    color: #bdc3c7;
+}
+
+.carte-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+/* Layout en ligne pour chaque catégorie */
+.menu-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+    margin-bottom: 120px;
+}
+
+/* Alterne automatiquement : une fois image à droite, une fois à gauche */
+.menu-section:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.menu-liste {
+    flex: 1;
+}
+
+.menu-liste h3 {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+/* Conteneur de l'image avec effet de masque */
+.menu-image-box {
+    flex: 1;
+    height: 450px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.menu-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* Zoom de base pour l'effet de dé-zoom au scroll */
+    transform: scale(1.2); 
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* --- Éléments du Menu (Repris et améliorés) --- */
+.item-menu {
+    margin-bottom: 35px;
+}
+
+.item-ligne-haute {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 8px;
+}
+
+.item-ligne-haute h4 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.points-separation {
+    flex-grow: 1;
+    border-bottom: 2px dotted #bdc3c7;
+    margin: 0 15px;
+    margin-bottom: 5px;
+}
+
+.item-ligne-haute .prix {
+    font-size: 1.2rem;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.item-details {
+    font-size: 0.95rem;
+    color: #7f8c8d;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+/* --- ÉTATS AVANT ANIMATION (Invisible) --- */
+.anim-scroll .menu-liste {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.anim-scroll .menu-image-box {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0); /* Effet rideau fermé */
+    transition: opacity 1s ease, clip-path 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Inversion du rideau pour les sections paires */
+.menu-section:nth-child(even) .menu-image-box {
+    clip-path: inset(0 0 0 100%);
+}
+
+/* --- ÉTATS APRÈS ANIMATION (Déclenché par JS au Scroll) --- */
+.anim-scroll.active .menu-liste {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.anim-scroll.active .menu-image-box {
+    opacity: 1;
+    clip-path: inset(0 0 0 0); /* Ouvre le rideau */
+}
+
+.anim-scroll.active .menu-image-box img {
+    transform: scale(1); /* L'image reprend sa taille normale en douceur */
+}
+
+/* --- Version Mobile --- */
+@media (max-width: 900px) {
+    .menu-section, .menu-section:nth-child(even) {
+        flex-direction: column;
+        gap: 40px;
+        margin-bottom: 70px;
+    }
+    .menu-image-box {
+        width: 100%;
+        height: 300px;
+    }
+    .menu-header {
+        padding-top: 110px;
+    }
+}
+
+/* --- Page Contact Style Haute Gastronomie --- */
+.contact-header {
+    text-align: center;
+    padding: 140px 20px 40px 20px;
+    background-color: #2c3e50;
+    color: white;
+}
+
+.contact-header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.contact-header p {
+    color: #bdc3c7;
+    font-style: italic;
+}
+
+.contact-container {
+    max-width: 1100px; /* Un poil plus serré pour faire plus intimiste */
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+/* Fin du gros bloc blanc opaque, on laisse respirer les colonnes */
+.contact-flex-layout {
+    display: flex;
+    gap: 100px;
+    align-items: flex-start;
+}
+
+.contact-details, .contact-form-box {
+    flex: 1;
+}
+
+.contact-flex-layout h3 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.details-group {
+    margin-bottom: 40px;
+}
+
+.details-group h3 {
+    font-size: 1.4rem;
+    border-bottom: 1px solid #dcdde1;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
+
+.details-group p {
+    color: #7f8c8d;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.details-group .adresse {
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+/* Faux plan élégant avec image sombre */
+.map-wrapper {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 220px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    cursor: pointer;
+}
+
+.map-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) brightness(0.7); /* Rend l'image neutre et chic */
+    transition: transform 0.5s ease;
+}
+
+.map-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(44, 62, 80, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.map-overlay span {
+    color: white;
+    border: 1px solid white;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.map-wrapper:hover img { transform: scale(1.05); }
+.map-wrapper:hover .map-overlay { background-color: rgba(231, 76, 60, 0.6); } /* Rouge au survol */
+.map-wrapper:hover .map-overlay span { background-color: white; color: #e74c3c; }
+
+/* --- Formulaire Minimaliste Premium --- */
+.input-line {
+    position: relative;
+    margin-bottom: 35px;
+}
+
+/* Entrées épurées (uniquement une ligne en bas) */
+.input-line input, .input-line select, .input-line textarea {
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid #bdc3c7;
+    background: transparent;
+    color: #2c3e50;
+    font-size: 1.05rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-line textarea {
+    resize: none;
+}
+
+/* L'effet de focus transforme la ligne en rouge */
+.input-line input:focus, .input-line select:focus, .input-line textarea:focus {
+    border-bottom: 2px solid #e74c3c;
+}
+
+/* Gestion magique des labels flottants */
+.input-line label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: #95a5a6;
+    font-size: 1.05rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+/* Quand le champ est cliqué ou rempli, le label s'envole vers le haut */
+.input-line input:focus ~ label,
+.input-line input:not(:placeholder-shown) ~ label,
+.input-line textarea:focus ~ label,
+.input-line textarea:not(:placeholder-shown) ~ label,
+.input-line select:focus ~ label,
+.input-line select:valid ~ label {
+    top: -15px;
+    font-size: 0.85rem;
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+/* Style du bouton envoyer (hérité de .btn-menu, on ajuste juste les bordures du bouton natif) */
+.action-form {
+    margin-top: 40px;
+}
+.action-form button.btn-menu {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* --- Effet Aller-Retour au Scroll (Cohérent avec le menu) --- */
+.contact-flex-layout.anim-scroll .contact-details {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.contact-flex-layout.anim-scroll .contact-form-box {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s ease 0.2s; /* Un léger retard pour un effet asynchrone ultra-pro */
+}
+
+.contact-flex-layout.anim-scroll.active .contact-details,
+.contact-flex-layout.anim-scroll.active .contact-form-box {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Version Mobile --- */
+@media (max-width: 850px) {
+    .contact-flex-layout {
+        flex-direction: column;
+        gap: 60px;
+    }
+    .contact-container {
+        margin: 40px auto;
+    }
+}
+
+/* --- Fenêtre Modale de Réservation --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 62, 80, 0.6); /* Fond sombre transparent */
+    backdrop-filter: blur(6px); /* Flou artistique de l'arrière-plan */
+    z-index: 2000; /* Doit être au-dessus de tout, même de la navbar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Caché par défaut */
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
+
+/* État actif quand on ajoute la classe en JS */
+.modal-overlay.modal-active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* La boîte blanche contenant le formulaire */
+.modal-box {
+    background-color: white;
+    width: 100%;
+    max-width: 500px;
+    padding: 50px 40px;
+    border-radius: 16px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    
+    /* Effet d'échelle : la boîte grandit légèrement à l'ouverture */
+    transform: scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.modal-overlay.modal-active .modal-box {
+    transform: scale(1);
+}
+
+/* Bouton de fermeture (la croix) */
+.close-modal-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #95a5a6;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-modal-btn:hover {
+    color: #e74c3c;
+}
+
+.modal-box h3 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.modal-subtitle {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 40px;
+}
+
+/* Disposition en ligne pour la date et les personnes */
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+.form-row .input-line {
+    flex: 1;
+}
+
+/* On réutilise les mêmes labels flottants que la page contact */
+.modal-form .input-line {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+/* Ajustement spécifique pour le type "date" pour éviter que le label chevauche */
+.input-line input[type="date"] ~ label {
+    top: -15px;
+    font-size: 0.85rem;
+    color: #e74c3c;
+    font-weight: 600;
+}
+.btn-menu.btn-book-trigger{
+    color: white;
+    background-color: black;
+    margin-top: 50px;
+    margin-left: 1000px;
+    font-size: 70%;
+}

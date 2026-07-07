@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Festin Doré - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="banniere">
+        <div class="logo">MONRESTO</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="accueil" class="presentation">
+        <div class="image-container">
+            <img src="images/tables.jpg" alt="Photo du restaurant">
+        </div>
+        <div class="texte-container">
+            <h1>Le Festin Doré</h1>
+            <p>Découvrez une expérience culinaire authentique et inoubliable au cœur de la ville.</p>
+        </div>
+    </section>
+    <div class="description">
+       <h1> Bienvenue au Festin Doré !</h1> <br>
+        Dans un cadre chaleureux et élégant, notre chef vous invite à redécouvrir les classiques de la gastronomie. Nous sélectionnons rigoureusement des produits frais, locaux et de saison pour vous offrir une expérience culinaire inoubliable, où chaque bouchée est une célébration.
+    </div>
+<!-- Le bouton déclencheur -->
+<button class="btn-menu btn-book-trigger">Réserver une Table</button>
+    <!-- Section Accroche Visuelle (Toujours dans l'Accueil) -->
+    <section class="accroche-plats">
+        <div class="texte-accroche">
+            <h2>L'art de vous faire saliver...</h2>
+            <p>Une pincée de passion, un soupçon d'audace et des produits d'exception. Laissez-vous guider par les parfums qui s'échappent de notre cuisine à travers cet aperçu de notre univers.</p>
+        </div>
+        
+        <div class="galerie-accroche">
+            <!-- Image 1 -->
+            <div class="carte-accroche">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Notre univers culinaire">
+                <div class="overlay-accroche">
+                    <span>La Fraîcheur</span>
+                </div>
+            </div>
+            
+            <!-- Image 2 -->
+            <div class="carte-accroche">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Le fait maison">
+                <div class="overlay-accroche">
+                    <span>La Passion</span>
+                </div>
+            </div>
+
+            <!-- Image 3 -->
+            <div class="carte-accroche">
+                <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="La créativité">
+                <div class="overlay-accroche">
+                    <span>L'Audace</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ... (Reste de ta galerie-accroche) ... -->
+        </div> <!-- Fermeture de .galerie-accroche -->
+        
+        <!-- Le Bouton vers le menu -->
+        <div class="action-accroche">
+            <a href="menu.html" class="btn-menu">Découvrir le Menu</a>
+        </div>
+    </section>
+
+    <!-- Beau Footer -->
+    <footer class="footer-resto">
+        <div class="footer-container">
+            <!-- Colonne 1 : À propos -->
+            <div class="footer-col">
+                <h3>Le Festin Doré</h3>
+                <p>Une expérience culinaire unique, alliante tradition et modernité au cœur de la ville. Venez vivre un moment inoubliable.</p>
+            </div>
+            
+            <!-- Colonne 2 : Horaires -->
+            <div class="footer-col">
+                <h3>Horaires d'ouverture</h3>
+                <p><strong>Mardi - Samedi :</strong> 12h00 - 14h30 / 19h00 - 22h30</p>
+                <p><strong>Dimanche & Lundi :</strong> Fermé</p>
+            </div>
+            
+            <!-- Colonne 3 : Contact -->
+            <div class="footer-col">
+                <h3>Contact & Accès</h3>
+                <p>📍 12 Rue de la Gastronomie, Paris</p>
+                <p>📞 01 23 45 67 89</p>
+                <p>✉️ contact@lefestindore.fr</p>
+            </div>
+        </div>
+        
+        <!-- Bas du footer (Droits d'auteur) -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 Le Festin Doré. Tous droits réservés. Conçu pour mon Portfolio.</p>
+        </div>
+    </footer>
+
+    <!-- Ton script JavaScript reste ici, tout en bas -->
+
+<!-- La Fenêtre Modale de Réservation -->
+<div class="modal-overlay" id="bookingModal">
+    <div class="modal-box">
+        <!-- Bouton pour fermer -->
+        <button class="close-modal-btn">&times;</button>
+        
+        <h3>Une Table au Festin Doré</h3>
+        <p class="modal-subtitle">Veuillez renseigner vos préférences. Vous recevrez une confirmation instantanée.</p>
+        
+        <form action="#" method="POST" class="modal-form">
+            <!-- Choix des invités et date sur la même ligne -->
+            <div class="form-row">
+                <div class="input-line">
+                    <select id="guests" name="guests" required>
+                        <option value="2">2 Personnes</option>
+                        <option value="3">3 Personnes</option>
+                        <option value="4">4 Personnes</option>
+                        <option value="5">5+ Personnes</option>
+                    </select>
+                    <label for="guests">Couverts</label>
+                </div>
+                
+                <div class="input-line">
+                    <input type="date" id="booking-date" name="booking-date" required>
+                    <label for="booking-date">Date</label>
+                </div>
+            </div>
+
+            <!-- Choix de l'heure -->
+            <div class="input-line">
+                <select id="booking-time" name="booking-time" required>
+                    <option value="" disabled selected hidden></option>
+                    <option value="12:00">12h00 (Déjeuner)</option>
+                    <option value="13:00">13h00 (Déjeuner)</option>
+                    <option value="19h30">19h30 (Dîner)</option>
+                    <option value="20h30">20h30 (Dîner)</option>
+                </select>
+                <label for="booking-time">Heure souhaitée</label>
+            </div>
+
+            <!-- Nom complet -->
+            <div class="input-line">
+                <input type="text" id="modal-name" name="modal-name" required placeholder=" ">
+                <label for="modal-name">Nom de réservation</label>
+            </div>
+
+            <div class="action-form">
+                <button type="submit" class="btn-menu">Confirmer la demande</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="dynamique.js"></script>
+</body>
+</html>

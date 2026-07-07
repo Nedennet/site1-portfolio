@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Réservations - Le Festin Doré</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Bannière -->
+    <header class="banniere">
+        <div class="logo">MonResto</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- En-tête de la page Contact -->
+    <div class="contact-header">
+        <h1>Contact & Réservations</h1>
+        <p>Une question, une grande table ou une privatisation ? Écrivez-nous.</p>
+    </div>
+
+    <!-- Section Principale Contact -->
+    <main class="contact-container">
+        <section class="contact-flex-layout anim-scroll">
+            
+            <!-- Colonne Gauche : Infos & Plan chic -->
+            <div class="contact-details">
+                <div class="details-group">
+                    <h3>La Table</h3>
+                    <p class="adresse">📍 12 Rue de la Gastronomie, 75001 Paris</p>
+                    <p>📞 01 23 45 67 89</p>
+                    <p>✉️ contact@lefestindore.fr</p>
+                </div>
+                
+                <div class="details-group">
+                    <h3>Les Heures</h3>
+                    <p><strong>Du Mardi au Samedi</strong></p>
+                    <p class="horaires">12h00 - 14h30 &nbsp;|&nbsp; 19h00 - 22h30</p>
+                    <p class="fermeture">Fermé le Dimanche et Lundi</p>
+                </div>
+
+                <!-- Visuel de carte premium (Image stylisée) -->
+                <div class="map-wrapper">
+                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=600&q=80" alt="Plan de quartier">
+                    <div class="map-overlay">
+                        <span>Voir sur Google Maps</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Colonne Droite : Formulaire Minimaliste -->
+            <div class="contact-form-box">
+                <h3>Envoyer un Message</h3>
+                <form action="#" method="POST">
+                    <div class="input-line">
+                        <input type="text" id="name" name="name" required placeholder=" ">
+                        <label for="name">Votre Nom complet</label>
+                    </div>
+
+                    <div class="input-line">
+                        <input type="email" id="email" name="email" required placeholder=" ">
+                        <label for="email">Votre Adresse Email</label>
+                    </div>
+
+                    <div class="input-line">
+                        <select id="subject" name="subject" required>
+                            <option value="" disabled selected hidden></option>
+                            <option value="reservation">Réserver une table</option>
+                            <option value="privatisation">Privatisation / Événement</option>
+                            <option value="autre">Autre demande</option>
+                        </select>
+                        <label for="subject">Sujet de votre demande</label>
+                    </div>
+
+                    <div class="input-line">
+                        <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
+                        <label for="message">Votre Message...</label>
+                    </div>
+
+                    <div class="action-form">
+                        <button type="submit" class="btn-menu">Envoyer</button>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-resto">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Le Festin Doré</h3>
+                <p>Une expérience culinaire unique, alliant tradition et modernité.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Horaires</h3>
+                <p>Mardi - Samedi : 12h00 - 22h30</p>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <p>📍 12 Rue de la Gastronomie, Paris</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Le Festin Doré. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="dynamique.js"></script>
+</body>
+</html>
